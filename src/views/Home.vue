@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <BaseHeader></BaseHeader>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapGetters } from "vuex";
+import BaseHeader from "@/views/BaseHeader";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  components: { BaseHeader },
+  computed: {
+    ...mapGetters(["userInfo"])
+  },
+  methods: {
+    userLogout() {
+      this.$store.dispatch("logOut").then(() => {
+        location.reload(); // 为了重新实例化vue-router对象 避免bug
+      });
+    }
   }
-}
+};
 </script>
