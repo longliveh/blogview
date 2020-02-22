@@ -1,14 +1,16 @@
 <template>
   <div>
     <BaseHeader></BaseHeader>
+    <Login></Login>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import BaseHeader from "@/views/BaseHeader";
+import Login from "../components/Login";
 export default {
-  components: { BaseHeader },
+  components: { Login, BaseHeader },
   computed: {
     ...mapGetters(["userInfo"])
   },

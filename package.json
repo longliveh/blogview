@@ -44,7 +44,12 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-parsing-error": [2, {
+        "x-invalid-end-tag": false
+      }]
+
+    }
   },
   "browserslist": [
     "> 1%",

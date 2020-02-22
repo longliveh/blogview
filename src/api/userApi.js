@@ -2,14 +2,11 @@ import request from "@/utils/request";
 
 const user = {
   //登录
-  login({ name, password }) {
+  login(form) {
     return request({
       url: "/login",
       method: "post",
-      params: {
-        name,
-        password
-      }
+      params: form
     });
   },
   //用户信息

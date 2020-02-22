@@ -4,7 +4,10 @@ import store from "../store";
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_URL, // api 的 base_url
-  timeout: 5000 // 请求超时时间
+  timeout: 5000000, // 请求超时时间
+  headers: {
+    "Content-Type": "application/json"
+  } //请求头
 });
 
 // request拦截器
