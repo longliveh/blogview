@@ -2,14 +2,15 @@ import Storage from "@/utils/storage";
 import userApi from "@/api/userApi";
 const user = {
   state: {
-    token: Storage.get("token") || null,
+    islogin:Storage.get("islogin")==null?false:true,
     userInfo: ""
   },
 
   mutations: {
-    SET_TOKEN: (state, token) => {
-      Storage.set("token", token);
-      state.token = token;
+
+    SET_ISLOGIN: (state, islogin) => {
+      Storage.set("islogin", islogin);
+      state.islogin = islogin;
     },
     SET_USER_INFO: (state, userInfo) => {
       state.userInfo = userInfo;
@@ -17,8 +18,8 @@ const user = {
   },
 
   actions: {
-    setToken({ commit }, token) {
-      commit("SET_TOKEN", token);
+    setlogin({ commit }, islogin) {
+      commit("SET_ISLOGIN", islogin);
     },
     //用户信息
     getUserInfo({ commit, state }) {

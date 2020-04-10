@@ -1,7 +1,16 @@
 <template>
-  <div>
+  <div class="content">
     <BaseHeader></BaseHeader>
-    <Login></Login>
+    <!--<Login></Login>-->
+    <!--<Publish></Publish>-->
+    <!--<LiveVideo></LiveVideo>-->
+
+    <template v-for="item in blogList">
+      <Blog :blog="item"></Blog>
+    </template>
+    <router-view/>
+
+
   </div>
 </template>
 
@@ -9,17 +18,61 @@
 import { mapGetters } from "vuex";
 import BaseHeader from "@/views/BaseHeader";
 import Login from "../components/Login";
+import Register from "./Register";
+import ImgViewer from "../components/Blog/ImgViewer";
+import Blog from "@/components/Blog/Blog";
+import Publish from "@/components/Blog/Publish";
+import CommentList from "@/components/Blog/CommentList/CommentList";
+import blogApi from "@/api/blogApi"
 export default {
-  components: { Login, BaseHeader },
+  components: { CommentList, Publish, Blog, ImgViewer, Login, BaseHeader},
+  data(){
+    return{
+      transitionName:"",
+      blogList:[]
+    }
+  },
   computed: {
     ...mapGetters(["userInfo"])
   },
   methods: {
-    userLogout() {
-      this.$store.dispatch("logOut").then(() => {
-        location.reload(); // 为了重新实例化vue-router对象 避免bug
-      });
+    handleSpinShow () {
+      this.$Spin.show();
+      setTimeout(() => {
+        this.$Spin.hide();
+      }, 500);
+    },
+    async getBlog(){
+      let res = await blogApi.getBlogByUserid(1);
+      this.blogList = res.data;
+      console.log(res)
     }
+  },
+  created(){
+    this.getBlog()
+    console.log(this.blogList)
+  },
+
+  // watch $route 决定使用哪种过渡
+  watch: {
+    // '$route' (to, from) {
+    //   this.handleSpinShow();
+    // }
   }
 };
 </script>
+<style>
+ .content{
+   background-repeat: no-repeat;
+   background-position: center 0;
+   background-attachment:fixed;
+   background-size: 100%;
+   background-image: url(https://file.iviewui.com/dev-dist/5825f033c6ff12cd1ed1f3c99dff5e4b.svg);
+
+   /*background-color: #b4daf0;*/
+   /*background-image-preview: url("../assets/body_bg.jpg");*/
+
+
+ }
+
+</style>

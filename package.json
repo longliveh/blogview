@@ -8,12 +8,22 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@kevinfaguiar/vue-twemoji-picker": "^5.2.3",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
-    "iview": "^3.5.4",
+    "hbl-comment": "^1.2.3",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
     "node-sass": "^4.13.1",
+    "v-emoji-picker": "^2.1.5",
+    "v-viewer": "^1.5.1",
+    "videojs-contrib-hls": "^5.15.0",
+    "view-design": "^4.0.0",
     "vue": "^2.6.11",
+    "vue-baberrage": "^3.2.4",
+    "vue-emoji-picker": "^1.0.1",
     "vue-router": "^3.1.5",
+    "vue-video-player": "^5.0.2",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
@@ -45,10 +55,12 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/no-parsing-error": [2, {
-        "x-invalid-end-tag": false
-      }]
-
+      "vue/no-parsing-error": [
+        2,
+        {
+          "x-invalid-end-tag": false
+        }
+      ]
     }
   },
   "browserslist": [
