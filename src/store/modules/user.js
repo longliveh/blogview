@@ -3,7 +3,7 @@ import userApi from "@/api/userApi";
 const user = {
   state: {
     islogin:Storage.get("islogin")==null?false:true,
-    userInfo: ""
+    userinfo: JSON.parse(Storage.get("userinfo"))
   },
 
   mutations: {
@@ -13,7 +13,8 @@ const user = {
       state.islogin = islogin;
     },
     SET_USER_INFO: (state, userInfo) => {
-      state.userInfo = userInfo;
+      Storage.set("userinfo", userInfo);
+      state.userinfo = userInfo;
     }
   },
 
@@ -22,13 +23,14 @@ const user = {
       commit("SET_ISLOGIN", islogin);
     },
     //用户信息
-    getUserInfo({ commit, state }) {
+    getUserInfo({ commit }) {
       return new Promise((resolve, reject) => {
         userApi
-          .getInfo({ token: state.token })
+          .getInfo(-1)
           .then(res => {
-            if (res.result) {
-              commit("SET_USER_INFO", res.result.userInfo);
+            if (res.code==0) {
+              commit("SET_USER_INFO", res.data);
+              resolve()
             }
           })
           .catch(err => {
@@ -37,13 +39,16 @@ const user = {
       });
     },
     //登出
-    logOut({ commit, state }) {
+    logOut({ commit }) {
       return new Promise((resolve, reject) => {
         userApi
-          .logOut({ token: state.token })
-          .then(() => {
-            commit("SET_TOKEN", "");
-            Storage.cle();
+          .logOut()
+          .then(res => {
+            if (res.code === 0)
+            {
+              Storage.cle();
+              resolve()
+            }
             resolve();
           })
           .catch(err => {

@@ -11,6 +11,9 @@ import "video.js/dist/video-js.css";
 import "vue-video-player/src/custom-theme.css";
 import hls from "videojs-contrib-hls";
 import { vueBaberrage } from "vue-baberrage";
+import VueParticles from "vue-particles";
+
+Vue.use(VueParticles);
 Vue.use(vueBaberrage);
 Vue.use(hls);
 Vue.use(VideoPlayer);
@@ -31,6 +34,7 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-Vue.prototype.$host = "localhost:8888";
+Vue.prototype.$ip = "192.168.1.106";
+Vue.prototype.$host = Vue.prototype.$ip + ":" + "8888";
 
 console.log(process.env);

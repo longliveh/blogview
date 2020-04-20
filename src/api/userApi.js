@@ -10,22 +10,52 @@ const user = {
     });
   },
   //用户信息
-  getInfo({ token }) {
+  getInfo(userid) {
     return request({
-      url: "/userInfo",
+      url: "/getuserInfo",
       method: "post",
       params: {
-        token
+        "userid":userid
       }
     });
   },
   //登出
-  logOut({ token }) {
+  logOut() {
     return request({
-      url: "/userLogout",
+      url: "/logout",
+      method: "post",
+      params:{}
+    });
+  },
+  focus(userid,focus){
+    return request({
+      url: "/focusornot",
       method: "post",
       params: {
-        token
+        "userid":userid,
+        "focus":focus
+      }
+    });
+  },
+  //检查是否关注
+  isfocus(userid){
+    return request({
+      url: "/isfocus",
+      method: "post",
+      params: {
+        "userid":userid,
+      }
+    });
+  },
+  //查询关注列表or查询粉丝列表
+  //type 10="关注" 20="粉丝"
+  getFocusOrFansList(userid,type) {
+    return request({
+      url: "/getfocusorfanslist",
+      method: "post",
+      params: {
+        "userid":userid,
+        "type":type
       }
     });
   }

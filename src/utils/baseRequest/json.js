@@ -1,6 +1,6 @@
 import axios from "axios";
 import store from "../../store";
-import storage from "../../utils/storage"
+import storage from "../../utils/storage";
 import router from "../../router";
 
 // 创建axios实例
@@ -36,15 +36,14 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     let { data, code, msg } = response.data;
-    if(code==20001)
-    {
-      router.push("/")
-      storage.cle()
+    if (code == 20001 && store.state.user.islogin) {
+      router.go(0);
+      console.log("清理storage");
+      storage.cle();
     }
-    if(code == 0)
-    {
-      return response.data;
-    }
+
+    return response.data;
+
     // if (code == 200) {
     //   // if(status===500) 处理token过期等
     //   return Promise.resolve(false);
