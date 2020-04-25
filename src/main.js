@@ -12,6 +12,7 @@ import "vue-video-player/src/custom-theme.css";
 import hls from "videojs-contrib-hls";
 import { vueBaberrage } from "vue-baberrage";
 import VueParticles from "vue-particles";
+import axios from "axios";
 
 Vue.use(VueParticles);
 Vue.use(vueBaberrage);
@@ -36,5 +37,5 @@ new Vue({
 
 Vue.prototype.$ip = "192.168.1.106";
 Vue.prototype.$host = Vue.prototype.$ip + ":" + "8888";
-
+Vue.prototype.$http = axios
 console.log(process.env);
