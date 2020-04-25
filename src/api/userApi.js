@@ -58,6 +58,15 @@ const user = {
         "type":type
       }
     });
+  },
+  getwholikedmeRecent()
+  {
+    return request({
+      url: "/wholikedme",
+      method: "post",
+      params: {
+      }
+    });
   }
 };
 export default user;
