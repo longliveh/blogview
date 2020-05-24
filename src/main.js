@@ -29,13 +29,14 @@ Vue.use(ViewUI);
 
 Vue.config.productionTip = false;
 
+
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount("#app");
 
-Vue.prototype.$ip = "192.168.1.106";
+Vue.prototype.$ip = "localhost";
 Vue.prototype.$host = Vue.prototype.$ip + ":" + "8888";
 Vue.prototype.$http = axios
 console.log(process.env);

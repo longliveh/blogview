@@ -2,6 +2,17 @@ import request from "@/utils/baseRequest/json";
 
 const commonApi = {
   //注册
+  search(type,query) {
+    return request({
+      url: "/search",
+      params: {
+        type:type,
+        query:query
+      }
+    });
+  },
+
+  //注册
   register(form) {
     return request({
       url: "/regist",
@@ -21,7 +32,7 @@ const commonApi = {
   },
 
   //
-  getUserbyCommentId(commentid){
+  getUserbyCommentId(commentid) {
     return request({
       url: "/getuserInfobyCom",
       method: "post",
@@ -29,6 +40,6 @@ const commonApi = {
         commentid: commentid
       }
     });
-  },
+  }
 };
 export default commonApi;

@@ -3,11 +3,11 @@ import userApi from "@/api/userApi";
 const user = {
   state: {
     islogin:Storage.get("islogin")==null?false:true,
-    userinfo: JSON.parse(Storage.get("userinfo"))
+    userinfo: JSON.parse(Storage.get("userinfo")),
+    search_list:Storage.get("search_list")
   },
 
   mutations: {
-
     SET_ISLOGIN: (state, islogin) => {
       Storage.set("islogin", islogin);
       state.islogin = islogin;

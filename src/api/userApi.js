@@ -67,6 +67,16 @@ const user = {
       params: {
       }
     });
-  }
+  },
+  //用户信息
+  changeName(nickname) {
+    return request({
+      url: "/changename",
+      method: "post",
+      params: {
+        "nickname":nickname
+      }
+    });
+  },
 };
 export default user;
