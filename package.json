@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@kevinfaguiar/vue-twemoji-picker": "^5.2.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "hbl-comment": "^1.2.3",
     "iview": "^3.5.4",
