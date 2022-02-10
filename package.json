@@ -15,7 +15,7 @@
     "iview": "^3.5.4",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "v-emoji-picker": "^2.1.5",
     "v-viewer": "^1.5.1",
     "videojs-contrib-hls": "^5.15.0",
